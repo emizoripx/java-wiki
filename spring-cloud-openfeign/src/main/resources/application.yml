@@ -1,0 +1,13 @@
+server:
+  port: 8091
+feign:
+  hystrix:
+    enabled: true
+logging:
+  level:
+    root: DEBUG
+    org.springframework.web: DEBUG
+    com:
+      mcalvaro:
+        springcloudopenfeign:
+          client: DEBUG
