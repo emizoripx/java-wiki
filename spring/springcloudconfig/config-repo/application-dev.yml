@@ -1,0 +1,2 @@
+my.prop: from application-dev.yml
+my.var1: value1

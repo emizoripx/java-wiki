@@ -1,0 +1,44 @@
+server:
+  port: 8888
+spring:
+  config:
+    name: configserver
+  application:
+    name: springcloudconfigserver
+  cloud:
+    config:
+      server:
+        encrypt:
+          enabled: true
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          repos:
+            simple: file://${user.home}/repos/simple
+            special:
+              pattern: special*/dev*,*special*/dev*
+              uri: file://${user.home}/repos/special
+            local:
+              pattern: local*
+              uri: file://${user.home}/repos/local
+
+            team-a:
+              pattern: team-a-*
+              cloneOnStart: true
+              uri: file://${user.home}/repos/staging
+            team-b:
+              pattern: team-b-*
+              cloneOnStart: false
+              uri: file://${user.home}/repos/development
+        health:
+          repositories:
+            team-a:
+              label: master
+            team-b:
+              label: master
+
+
+  security:
+    user:
+      name: root
+      password: "{cipher}AQAlZbwaYvFU0hV9fjpih/nZCvpopdK2DFUcE1JlexrRT8IS/w6m+GCxayWs3bxDZ8nuSvuqbwPeLeu1MQC+EurTszga9m/3Ot9tshZjwaiE5F/gzAYsCy53NM80W0DDB3059cg3nfZYTLGRuPkz1KxnhcBXoTXPOw2DBX/IOju0+l4vY83Bd8HbmbY/i7bqOdM7z0Ju83+QUf7tvcOwRkHJzUFoIqf5sB6zQ64kF0iR1UF3kRECf74Vx5EHK2k7mfln8mwRsxXSlz8sW+mVtkeHW1HgPxe99Rnj/OIuRY6YAGiGk5oGNUttTttT6rusvVrfmDNaMCw4vQLA0hFTa/sAaySUa7Mwcyj9zoRsqYL3sLmvXPs9v6s3/93/A8XdewE="
+meessage: "{cipher}AQAfgVidpQChpXM+zqEaIdNC1+DKeAsibeO50rdO4kCypS2eoNioTag/A15UDfUbgT6JigzDmdJuhxH/+pqVi6Q6pYXeuVcV3Y0A0mNvpFa0SPyxaIc6bUn/7ZjcpezcYxddydRkTWYZqSUNBScX0cVrk/yqiku8NDZLWblVoOvyFa4ZKyyJ+jaOeY170z6mAmvVKek/IM6n51zbWcLjQno+3+6xRRKnoP8zq2qm/+hyIUEO5ZKMvW2+vAEKHQikC1tz2yTGU+wO1Ty4EyBF5SyweTzgb6YDikIv0vJQ07n7o60YTV1PnlWX+no/y6heVsXJcd6EQ72/qWj6Xd5alGp9uADYBXkv2qiCFDMAEJc562GTZIO5ezv4DcB7yiWchFY="

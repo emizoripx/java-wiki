@@ -1,0 +1,18 @@
+server:
+  port: 8880
+#spring:
+#  application:
+#    name: springcloudconfigdemoclient
+#  profiles:
+#    active: dev, foo
+#  config:
+#    import: optional:configserver:http://root:s3cr3t@localhost:8888
+spring:
+  cloud:
+    bootstrap:
+      enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

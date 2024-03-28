@@ -1,0 +1,26 @@
+spring:
+#  config:
+#    name: configserver
+#  application:
+#    name: springcloudconfigserver
+  cloud:
+    config:
+      server:
+        encrypt:
+          enabled: true
+#encrypt:
+#  key: 9fdf51f4b86251cde0a9bcd9c3f72ca72f2cf3029fdf51f4b86251cde0a
+encrypt:
+  failOnError: false
+  keyStore:
+    location: classpath:keystore.jks
+    password: ${KEYSTORE_PASSWORD:foobar} # don't use a default in production
+    alias: test
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    config:
+      enabled: true
